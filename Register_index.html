@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form action="Login_index.html" method="POST" onsubmit="return validate()" name="vform">
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" placeholder="User Name" placeholder="Your Name"/>
+                                <div id="username_error" style="color:red;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" placeholder="Your Email"/>
+                                <div id="email_error" style="color:red;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" placeholder="Password"/>
+                                <div id="password_error" style="color:red;"></div>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="confirm_password"placeholder="Repeat your password"/>
+                                <div id="confirmpassword_error" style="color:red;"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="img/signup-image.jpg" alt="sing up image"></figure>
+                        <a href="#" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
+
+<script type="text/javascript">
+    var username = document.forms["vform"]["username"];
+    var email = document.forms["vform"]["email"];
+    var password = document.forms["vform"]["password"];
+    var confirm_password = document.forms["vform"]["confirm_password"];
+    
+    
+    var username_error = document.getElementById("username_error");
+    var email_error = document.getElementById("email_error");
+    var password_error = document.getElementById("password_error");
+    //var confirmpassword_error = document.getElementById("confirmpassword_error");
+    
+    username.addEventlistner("blur",nameVerify,true);
+    email.addEventlistner("blur",emailVerify,true);
+    password.addEventlistner("blur",passwordVerify,true);
+    
+    // validation
+    function validate(){
+    if(username.value ==""){
+        username.style.border ="1px solid #5E6E66";
+        username_error.textContent = "User name is Required";
+        username.focus();
+        return false;
+    }
+    
+    if(email.value ==""){
+        email.style.border ="1px solid #5E6E66";
+        email_error.textContent = "Email  is Required";
+        email.focus();
+        return false;
+    }
+    
+    if(password.value ==""){
+        password.style.border ="1px solid #5E6E66";
+        password_error.textContent = "Password is Required";
+        password.focus();
+        return false;
+    }
+        //check two password mutch
+        if(password.value != confirm_password.value){
+            password_error.innerHTML="Two passwords are not match";
+            confirmpassword_error.innerHTML="Two passwords are not match";
+            password.focus();
+            return false;
+        }
+    
+    }
+    
+    function nameVerify(){
+        if(username.value !=""){
+            username.style.border="1px solid #5e6e66";
+            username_error.innerHTML="";
+            return true;
+    
+        }
+    }
+    
+    function emailVerify(){
+        if(email.value !=""){
+            email.style.border="1px solid #5e6e66";
+            email_error.innerHTML="";
+            return true;
+    
+        }
+    }
+    
+    function passwordVerify(){
+        if(password.value !=""){
+            password.style.border="1px solid #5e6e66";
+            password_error.innerHTML="";
+            return true;
+    
+        }
+    }
+    </script>
